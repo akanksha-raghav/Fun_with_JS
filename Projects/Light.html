@@ -1,0 +1,57 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light On/Off</title>
+</head>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            height: 100vh;
+            background-color: steelblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        .main-heading h2{
+            margin-bottom: 20px;
+        }
+        button{
+            display: inline-block;
+            background-color: tomato;
+            color: white;
+            font-size: 16px;
+            font-weight: normal;
+            text-align: center;
+            font-family: "Reddress",cursive;
+            border-radius: 3px;
+            transform: 400ms;
+            border: 1;
+            text-decoration: none;
+            box-shadow: 0 15px 10px 0 rgba(0, 0, 0, 0.1);
+            padding-top: 10px;
+            z-index: 1000000;
+        }
+        img{
+            width: 150px;
+        }
+
+    </style>
+    <body>
+        <div class="main-heading">
+            <h1>Can you turn the light on?</h1>
+            <button onclick="document.getElementById('myImage').src='lightOn.png'">Turn on the Light!</button>
+            <img src="lightoff.png" alt="lightOff" id="myImage">
+            <button onclick="document.getElementById('myImage').src='lightoff.png'">Turn off the Light!</button>
+
+        </div>
+    </body>
+</html>
