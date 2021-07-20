@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <title>Fetch API</title>
+    </head>
+    <style>
+        body{
+            background-color: teal;
+        }
+        #container{
+            margin: 100px 0 0 450px;
+        }
+         #card{
+            height: 30%;
+            width: 40%;
+            text-align: center;
+        } 
+        .card{
+            border-radius: 20px;
+            text-align: center;
+            background-color: white;
+        }
+        img{
+            height: 40%;
+            width: 40%;
+        }
+        .card-body-title span{
+            color: var(--primary-color);
+            font-weight: 400;
+        }
+        .card-body-text{
+            color: var(--primary-color);
+            font-size: 1.6rem;
+            margin-top:0;
+            margin-bottom: 2rem;
+        }
+        .card-footer{
+            display: flex;
+            justify-content: space-around;
+        }
+        .card-footer-social{
+            text-align: center;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        .card-footer-social p{
+            letter-spacing: 1px;
+        }
+        .card:hover{
+            transform: scale(0.9,0.9);
+            box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), -5px -5px 30px 15px rgba(0,0,0,0.22);
+        }
+
+    </style>
+    <body>
+        <div id="container"></div>
+       
+    </body>
+    <script>
+        const container = document.querySelector('#container');
+        const request = new XMLHttpRequest();
+        request.open('GET',"https://restcountries.eu/rest/v2/name/nepal");
+        request.send();
+
+        // response
+        request.addEventListener('load',function(){
+            const [data] = JSON.parse(this.responseText) ;
+            const htmData = `
+            <div id="card">
+            <article class="card">
+                <div class="card-body">
+                    <img src ="${data.flag}" alt="" class="card-body-img"/>
+                    <h1 class="card-body-title">
+                        ${data.name}<span></span>
+                    </h1>
+                    <p class="card-body-text">Capital : ${data.capital}</p>
+                </div>
+                <div class="card-footer">
+                    <div class="card-footer-social">
+                        <h3>${data.nativeName}</h3>
+                        <p>Native Language</p>
+                    </div>
+                    <div class="card-footer-social">
+                        <h3>${data.population}</h3>
+                        <p>Population</p>
+                    </div>
+                    <div class="card-footer-social">
+                        <h3>${data.demonym}</h3>
+                        <p>Demonym</p>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+            `;
+            container.insertAdjacentHTML("afterbegin",htmData);
+        })
+    </script>
+</html>
